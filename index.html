@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuenta Regresiva - 1 de Noviembre de 2026</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    /* Glow & Blur Effects */
+    .glow-bg {
+      background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15), rgba(15, 23, 42, 0));
+    }
+    .card-glass {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .number-glow {
+      text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient background glow -->
+  <div class="fixed inset-0 glow-bg pointer-events-none z-0"></div>
+
+  <!-- Main Container -->
+  <main class="relative z-10 flex-grow flex flex-col items-center justify-center p-4 sm:p-6 md:p-12">
+    
+    <!-- Header Badge & Title -->
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
+        <i data-lucide="cake" class="w-4 h-4 text-pink-400"></i>
+        <span>Gran Celebración Especial</span>
+      </div>
+      
+      <!-- Main Title updated to Cumpleaños de DIANA -->
+      <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-300 to-indigo-400 mb-4 leading-tight drop-shadow-sm">
+        Cumpleaños de DIANA
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base md:text-lg max-w-lg mx-auto">
+        Cuenta regresiva para celebrar su gran día el 1 de Noviembre de 2026.
+      </p>
+    </div>
+
+    <!-- Countdown Timer Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 w-full max-w-4xl mx-auto mb-10">
+      
+      <!-- Days -->
+      <div class="card-glass rounded-2xl p-4 sm:p-6 text-center shadow-2xl flex flex-col justify-center items-center transform transition duration-300 hover:scale-105 hover:border-indigo-500/40">
+        <span id="days" class="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-white number-glow tracking-tight">00</span>
+        <span class="text-xs sm:text-sm uppercase tracking-widest text-indigo-400 font-semibold mt-2">Días</span>
+      </div>
+
+      <!-- Hours -->
+      <div class="card-glass rounded-2xl p-4 sm:p-6 text-center shadow-2xl flex flex-col justify-center items-center transform transition duration-300 hover:scale-105 hover:border-indigo-500/40">
+        <span id="hours" class="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-white number-glow tracking-tight">00</span>
+        <span class="text-xs sm:text-sm uppercase tracking-widest text-indigo-400 font-semibold mt-2">Horas</span>
+      </div>
+
+      <!-- Minutes -->
+      <div class="card-glass rounded-2xl p-4 sm:p-6 text-center shadow-2xl flex flex-col justify-center items-center transform transition duration-300 hover:scale-105 hover:border-indigo-500/40">
+        <span id="minutes" class="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-white number-glow tracking-tight">00</span>
+        <span class="text-xs sm:text-sm uppercase tracking-widest text-indigo-400 font-semibold mt-2">Minutos</span>
+      </div>
+
+      <!-- Seconds -->
+      <div class="card-glass rounded-2xl p-4 sm:p-6 text-center shadow-2xl flex flex-col justify-center items-center transform transition duration-300 hover:scale-105 hover:border-indigo-500/40">
+        <span id="seconds" class="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-indigo-400 number-glow tracking-tight">00</span>
+        <span class="text-xs sm:text-sm uppercase tracking-widest text-indigo-400 font-semibold mt-2">Segundos</span>
+      </div>
+
+    </div>
+
+    <!-- Live Status / Message -->
+    <div id="status-message" class="card-glass px-6 py-3 rounded-xl flex items-center gap-3 text-slate-300 text-xs sm:text-sm shadow-lg">
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+      </span>
+      <span>Reloj sincronizado en tiempo real</span>
+    </div>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="relative z-10 py-6 text-center text-xs text-slate-500">
+    <p>Fecha Meta: 1 de Noviembre de 2026, 00:00:00 (Hora local)</p>
+  </footer>
+
+  <!-- Timer Logic Script -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Target Date: November 1, 2026 00:00:00
+    const targetDate = new Date('November 1, 2026 00:00:00').getTime();
+
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const statusEl = document.getElementById('status-message');
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        // Countdown completed
+        daysEl.innerText = "00";
+        hoursEl.innerText = "00";
+        minutesEl.innerText = "00";
+        secondsEl.innerText = "00";
+        
+        statusEl.innerHTML = `
+          <span class="relative flex h-3 w-3">
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+          </span>
+          <span class="font-semibold text-white">¡Llegó la fecha esperada! (01/11/2026)</span>
+        `;
+        return;
+      }
+
+      // Calculations for days, hours, minutes and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display results formatted with leading zeros
+      daysEl.innerText = String(days).padStart(2, '0');
+      hoursEl.innerText = String(hours).padStart(2, '0');
+      minutesEl.innerText = String(minutes).padStart(2, '0');
+      secondsEl.innerText = String(seconds).padStart(2, '0');
+    }
+
+    // Initial call and start interval
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
